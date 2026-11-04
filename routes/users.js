@@ -153,7 +153,7 @@ module.exports = function (router) {
 
         await Task.updateMany({ assignedUser: String(user._id) }, UNASSIGNED);
         await User.deleteOne({ _id: user._id });
-        api.send(res, 200, 'User deleted', user);
+        res.status(204).end();
     }));
 
     return router;

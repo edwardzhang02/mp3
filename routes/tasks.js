@@ -146,7 +146,7 @@ module.exports = function (router) {
         var taskId = String(task._id);
         await User.updateMany({ pendingTasks: taskId }, { $pull: { pendingTasks: taskId } });
         await Task.deleteOne({ _id: task._id });
-        api.send(res, 200, 'Task deleted', task);
+        res.status(204).end();
     }));
 
     return router;
